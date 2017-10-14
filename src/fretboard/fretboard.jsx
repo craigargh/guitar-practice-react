@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 
 import {Position} from "./position";
 import * as constants from './constants'
@@ -74,11 +75,8 @@ export class Fretboard extends React.Component {
             const right = `${spacing}em`;
             const key = `guitar-string-${index}`;
 
-            let className = 'guitar-string';
-
-            if(index >= 3){
-                className = 'guitar-string wound'
-            }
+            const wound = index >= 3 ? 'wound' : null;
+            let className = classNames('guitar-string', wound);
 
             return <div className={className} style={{right}} key={key}/>;
         });
