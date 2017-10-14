@@ -30,8 +30,6 @@ export class Fretboard extends React.Component {
         const minFret = this.calculateMinFret();
         const maxFret = this.calculateMaxFret();
 
-        console.log(maxFret);
-
         const displayedFrets = maxFret - minFret + 3;
         const fretHeight = 2.5;
 
