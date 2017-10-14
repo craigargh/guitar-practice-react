@@ -54,5 +54,44 @@ describe('Fretboard component', () => {
         const fretboard = wrapper.find('.fretboard').first();
 
         expect(fretboard.props().style.height).toBe('12em');
-    })
+    });
+
+    it('it should set the position frets', () => {
+        const positions = [
+            {finger: 1, fret: 1, guitar_string: 1},
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const positionComponents = wrapper.find('Position');
+
+        expect(positionComponents.first().props().fret).toEqual(1);
+        expect(positionComponents.last().props().fret).toEqual(2);
+    });
+
+    it('it should offset the position frets by the minimum fret', () => {
+        const positions = [
+            {finger: 1, fret: 4, guitar_string: 1},
+            {finger: 2, fret: 5, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const positionComponents = wrapper.find('Position');
+
+        expect(positionComponents.first().props().fret).toEqual(2);
+        expect(positionComponents.last().props().fret).toEqual(3);
+    });
+
+    it('it should not offset the position frets if min is 0', () => {
+        const positions = [
+            {finger: 1, fret: 0, guitar_string: 1},
+            {finger: 2, fret: 5, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const positionComponents = wrapper.find('Position');
+
+        expect(positionComponents.first().props().fret).toEqual(0);
+        expect(positionComponents.last().props().fret).toEqual(5);
+    });
 });

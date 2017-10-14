@@ -15,10 +15,25 @@ export class Fretboard extends React.Component {
 
     render() {
         const {positions} = this.props;
+        const minFret = this.calculateMinFret();
+        let offset = 2;
+
+        if (minFret === 1){
+            offset = 1;
+        } else if (minFret === 0){
+            offset = 0;
+        }
 
         const positionComponents = positions.map((position, index) => {
+            const offsetFret = position.fret - minFret + offset;
+
+            const calculatedPosition = {
+                ...position,
+                fret: offsetFret
+            };
+
             const key = `position-${index}`;
-            return <Position key={key} {...position} />
+            return <Position key={key} {...calculatedPosition} />
         });
 
         const height = this.calculateFretboardHeight();

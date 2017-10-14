@@ -6,7 +6,7 @@ import {Fretboard} from "./fretboard/fretboard";
 class App extends Component {
     render() {
         const positions = [
-            {finger: 1, fret: 1, guitar_string: 1},
+            {finger: 1, fret: 0, guitar_string: 1},
             {finger: 2, fret: 2, guitar_string: 2},
             {finger: 3, fret: 3, guitar_string: 3},
             {finger: 4, fret: 4, guitar_string: 4},
