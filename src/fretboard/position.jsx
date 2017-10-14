@@ -31,7 +31,7 @@ export class Position extends React.Component {
 
     calculateFretPosition() {
         const {fret} = this.props;
-        const fretHeight = 2.5;
+        const fretHeight = 3;
         const circleHeight = 1.875;
         const offset = fretHeight - circleHeight;
 
@@ -42,7 +42,7 @@ export class Position extends React.Component {
 
     calculateStringPosition() {
         const {guitar_string} = this.props;
-        const stringWidth = 2.5;
+        const stringWidth = 2;
         const circleWidth = 1.875;
         const offset = stringWidth - circleWidth;
 

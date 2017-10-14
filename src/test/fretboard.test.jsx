@@ -29,7 +29,7 @@ describe('Fretboard component', () => {
         const wrapper = shallow(<Fretboard positions={positions}/>);
         const fretboard = wrapper.find('.fretboard').first();
 
-        expect(fretboard.props().style.height).toBe('12.5em');
+        expect(fretboard.props().style.height).toBe('15em');
     });
 
     it('should set the height of fretboard when lowest fret is 1', () =>{
@@ -41,7 +41,7 @@ describe('Fretboard component', () => {
         const wrapper = shallow(<Fretboard positions={positions}/>);
         const fretboard = wrapper.find('.fretboard').first();
 
-        expect(fretboard.props().style.height).toBe('10em');
+        expect(fretboard.props().style.height).toBe('12em');
     })
 
     it('should set the height of fretboard when lowest fret is 0', () =>{
@@ -53,6 +53,6 @@ describe('Fretboard component', () => {
         const wrapper = shallow(<Fretboard positions={positions}/>);
         const fretboard = wrapper.find('.fretboard').first();
 
-        expect(fretboard.props().style.height).toBe('10em');
+        expect(fretboard.props().style.height).toBe('12em');
     })
 });
