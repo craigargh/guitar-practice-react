@@ -16,16 +16,18 @@ export class Position extends React.Component {
     }
 
     render() {
-        const {finger} = this.props;
+        const {finger, fret} = this.props;
         const fretPosition = this.calculateFretPosition();
         const stringPosition = this.calculateStringPosition();
+
+        const className = fret > 0 ? 'circle' : 'open';
 
         const position = {
             top: fretPosition,
             right: stringPosition,
         };
 
-        return <div className="circle" style={position}>
+        return <div className={className} style={position}>
             <div className="position-text">{finger}</div>
         </div>
     }
@@ -45,7 +47,7 @@ export class Position extends React.Component {
         const {stringWidth, circleSize} = constants;
         const offset = stringWidth - circleSize;
 
-        const stringPosition = stringWidth * (guitar_string - 1)  + offset;
+        const stringPosition = stringWidth * (guitar_string - 1) + offset;
 
         return `${stringPosition}em`;
     }
