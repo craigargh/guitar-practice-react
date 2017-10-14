@@ -140,11 +140,41 @@ describe('Tablature component', () => {
         expect(item.props().style.top).toBe('5em');
     });
 
-    it('should set the width of the lines based on the max order', () => {
+    it('should render six tab lines', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 0},
+        ];
 
+        const wrapper = shallow(<Tablature sequence={sequence}/>);
+        const tabLines = wrapper.find('.tab-line');
+
+        expect(tabLines.length).toBe(6);
     });
 
-    it('should render six lines', () => {
+    it('should set the top offset of the tab lines', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 0},
+        ];
 
+        const wrapper = shallow(<Tablature sequence={sequence}/>);
+        const tabLines = wrapper.find('.tab-line');
+
+        expect(tabLines.at(0).props().style.top).toBe('0em');
+        expect(tabLines.at(1).props().style.top).toBe('1em');
+        expect(tabLines.at(2).props().style.top).toBe('2em');
+        expect(tabLines.at(3).props().style.top).toBe('3em');
+        expect(tabLines.at(4).props().style.top).toBe('4em');
+        expect(tabLines.at(5).props().style.top).toBe('5em');
+    });
+
+    it('should set the width of the tab lines based on the max order', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 7},
+        ];
+
+        const wrapper = shallow(<Tablature sequence={sequence}/>);
+        const tabLine = wrapper.find('.tab-line').first();
+
+        expect(tabLine.props().style.width).toBe('8em');
     });
 });
