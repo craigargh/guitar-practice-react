@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import {Position} from "../fretboard/position";
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({adapter: new Adapter()});
 
 describe('Position component', () => {
     it('Should set the finger number', () => {
@@ -19,5 +19,26 @@ describe('Position component', () => {
         const circle = wrapper.find('.circle');
 
         expect(circle.length).toBe(1);
-    })
-})
+    });
+
+    it('should set the position of the component to absolute', () => {
+        const wrapper = shallow(<Position finger={1}/>);
+        const circle = wrapper.find('.circle').first();
+
+        expect(circle.props().style.position).toEqual('absolute');
+    });
+
+    it('should calculate the position of fret one', () => {
+        const wrapper = shallow(<Position finger={1} fret={1}/>);
+        const circle = wrapper.find('.circle').first();
+
+        expect(circle.props().style.top).toEqual('1.5em');
+    });
+
+    it('should calculate the position of fret two', () => {
+        const wrapper = shallow(<Position finger={1} fret={2}/>);
+        const circle = wrapper.find('.circle').first();
+
+        expect(circle.props().style.top).toEqual('3em');
+    });
+});
