@@ -58,10 +58,10 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').at(1);
 
-        expect(item.props().style.left).toBe('1em');
+        expect(item.props().style.left).toBe('1.5em');
     });
 
-    it('should set the position 2\'s x offset', () => {
+    it('should set the position 3\'s x offset', () => {
         const sequence = [
             {"fret": 0, "guitar_string": 4, "order": 0},
             {"fret": 4, "guitar_string": 3, "order": 1},
@@ -71,7 +71,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').at(2);
 
-        expect(item.props().style.left).toBe('2em');
+        expect(item.props().style.left).toBe('3em');
     });
 
     it('should set y offset for string 1', () => {
@@ -175,6 +175,6 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const tabLine = wrapper.find('.tab-line').first();
 
-        expect(tabLine.props().style.width).toBe('8em');
+        expect(tabLine.props().style.width).toBe('12em');
     });
 });

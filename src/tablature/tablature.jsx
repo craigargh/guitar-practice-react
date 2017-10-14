@@ -1,5 +1,6 @@
 import React from 'react';
 
+import * as constants from '../fretboard/constants';
 import './tablature.css';
 
 export class Tablature extends React.Component {
@@ -32,9 +33,10 @@ export class Tablature extends React.Component {
         const tabItems = sequence.map((item, index) => {
             const key = `tab-item-${index}`;
             const {fret, order, guitar_string} = item;
+            const {tabPositionWidth} = constants;
 
             const offsetStyle = {
-                left: `${order}em`,
+                left: `${order * tabPositionWidth }em`,
                 top: `${guitar_string - 1}em`,
             };
 
@@ -51,9 +53,11 @@ export class Tablature extends React.Component {
 
         return Array(guitarStrings).fill().map((_, index) => {
             const key = `tab-guitar-string-${index}`;
+            const {tabPositionWidth} = constants;
+
             const stringOffset = {
                 top: `${index}em`,
-                width: `${tabLength + 1}em`,
+                width: `${(tabLength + 1) * tabPositionWidth}em`,
             };
 
             return <div className='tab-line' style={stringOffset} key={key}/>;

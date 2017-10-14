@@ -1,7 +1,7 @@
 
 .tab {
     position: relative;
-    width:20em;
+    width:24em;
     margin-right: auto;
     margin-left: auto;
 }
@@ -11,6 +11,8 @@
     display: inline-block;
     color: ghostwhite;
     height: 1em;
+    text-align: center;
+    width: 1.5em
 }
 
 .tab-line {
