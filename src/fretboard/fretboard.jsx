@@ -54,11 +54,12 @@ export class Fretboard extends React.Component {
         const fretCount = maxFret - minFret + fretOffset;
         const {fretHeight} = constants;
 
-        return Array(fretCount).fill().map((_, i) => {
-            const spacing = (i + 1) * fretHeight;
+        return Array(fretCount).fill().map((_, index) => {
+            const spacing = (index + 1) * fretHeight;
             const top = `${spacing}em`;
+            const key = `key-${index}`;
 
-            return <div className='fret' style={{top}}/>;
+            return <div className='fret' style={{top}} key={key}/>;
         });
     }
 
