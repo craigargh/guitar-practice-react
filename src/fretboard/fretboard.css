@@ -24,6 +24,7 @@
     height: 100%;
     position: absolute;
     margin-right: 0.931em;
+    box-shadow: 1px 0px 2px #333;
 }
 
 .wound {
