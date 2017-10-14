@@ -9,6 +9,9 @@ class App extends Component {
             {finger: 1, fret: 1, guitar_string: 1},
             {finger: 2, fret: 2, guitar_string: 2},
             {finger: 3, fret: 3, guitar_string: 3},
+            {finger: 4, fret: 4, guitar_string: 4},
+            {finger: 5, fret: 5, guitar_string: 5},
+            {finger: 6, fret: 6, guitar_string: 6},
         ];
 
         return (

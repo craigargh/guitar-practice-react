@@ -30,19 +30,23 @@ export class Position extends React.Component {
     }
 
     calculateFretPosition() {
-        const fretHeight = 2.5;
         const {fret} = this.props;
+        const fretHeight = 2.5;
+        const circleHeight = 1.875;
+        const offset = fretHeight - circleHeight;
 
-        const fretPosition = fretHeight * fret;
+        const fretPosition = fretHeight * (fret - 1) + offset;
 
         return `${fretPosition}em`;
     }
 
     calculateStringPosition() {
-        const stringWidth = 2.5;
         const {guitar_string} = this.props;
+        const stringWidth = 2.5;
+        const circleWidth = 1.875;
+        const offset = stringWidth - circleWidth;
 
-        const stringPosition = stringWidth * guitar_string;
+        const stringPosition = stringWidth * (guitar_string - 1)  + offset;
 
         return `${stringPosition}em`;
     }

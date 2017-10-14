@@ -32,27 +32,41 @@ describe('Position component', () => {
         const wrapper = shallow(<Position finger={1} fret={1}/>);
         const circle = wrapper.find('.circle').first();
 
-        expect(circle.props().style.top).toEqual('2.5em');
+        expect(circle.props().style.top).toEqual('0.625em');
     });
 
     it('should calculate the position of fret two', () => {
         const wrapper = shallow(<Position fret={2}/>);
         const circle = wrapper.find('.circle').first();
 
-        expect(circle.props().style.top).toEqual('5em');
+        expect(circle.props().style.top).toEqual('3.125em');
+    });
+
+    it('should calculate the position of fret three', () => {
+        const wrapper = shallow(<Position fret={3}/>);
+        const circle = wrapper.find('.circle').first();
+
+        expect(circle.props().style.top).toEqual('5.625em');
     });
 
     it('should calculate the position of string 1', () => {
         const wrapper = shallow(<Position guitar_string={1}/>);
         const circle = wrapper.find('.circle').first();
 
-        expect(circle.props().style.right).toEqual('2.5em');
-    })
+        expect(circle.props().style.right).toEqual('0.625em');
+    });
 
     it('should calculate the position of string 2', () => {
         const wrapper = shallow(<Position guitar_string={2}/>);
         const circle = wrapper.find('.circle').first();
 
-        expect(circle.props().style.right).toEqual('5em');
-    })
+        expect(circle.props().style.right).toEqual('3.125em');
+    });
+
+    it('should calculate the position of string 3', () => {
+        const wrapper = shallow(<Position guitar_string={3}/>);
+        const circle = wrapper.find('.circle').first();
+
+        expect(circle.props().style.right).toEqual('5.625em');
+    });
 });
