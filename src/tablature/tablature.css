@@ -1,0 +1,13 @@
+
+.tab {
+    position: relative;
+    width: 20em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.tab-position {
+    position: absolute;
+    display: inline-block;
+    color: ghostwhite;
+}
