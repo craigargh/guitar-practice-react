@@ -12,10 +12,6 @@ export class Fretboard extends React.Component {
         positions: PropTypes.array,
     };
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const minFret = this.calculateMinFret();
         const maxFret = this.calculateMaxFret();

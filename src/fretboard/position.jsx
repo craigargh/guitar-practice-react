@@ -11,10 +11,6 @@ export class Position extends React.Component {
         guitar_string: PropTypes.number,
     };
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {finger, fret} = this.props;
         const fretPosition = this.calculateFretPosition();
