@@ -27,7 +27,7 @@ export class Position extends React.Component {
     }
 
     calculateFretPosition(){
-        const fretHeight = 1.5;
+        const fretHeight = 2.5;
         const {fret} = this.props;
 
         const fretPosition = fretHeight * fret;

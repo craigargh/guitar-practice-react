@@ -32,13 +32,13 @@ describe('Position component', () => {
         const wrapper = shallow(<Position finger={1} fret={1}/>);
         const circle = wrapper.find('.circle').first();
 
-        expect(circle.props().style.top).toEqual('1.5em');
+        expect(circle.props().style.top).toEqual('2.5em');
     });
 
     it('should calculate the position of fret two', () => {
         const wrapper = shallow(<Position finger={1} fret={2}/>);
         const circle = wrapper.find('.circle').first();
 
-        expect(circle.props().style.top).toEqual('3em');
+        expect(circle.props().style.top).toEqual('5em');
     });
 });
