@@ -16,9 +16,12 @@ export class Fretboard extends React.Component {
     }
 
     render() {
-        const positionComponents = this.createPositions();
-        const frets = this.createFrets();
-        const height = this.calculateFretboardHeight();
+        const minFret = this.calculateMinFret();
+        const maxFret = this.calculateMaxFret();
+
+        const positionComponents = this.createPositions(minFret);
+        const frets = this.createFrets(minFret, maxFret);
+        const height = this.calculateFretboardHeight(minFret, maxFret);
 
         return <div className='fretboard' style={{height: height}}>
             {frets}
@@ -26,10 +29,9 @@ export class Fretboard extends React.Component {
         </div>;
     }
 
-    createPositions() {
+    createPositions(minFret) {
         const {positions} = this.props;
-        const minFret = this.calculateMinFret();
-        let offset = this.calculateFretOffset();
+        let offset = this.calculateFretOffset(minFret);
 
         const positionComponents = positions.map((position, index) => {
             const offsetFret = position.fret - minFret + offset;
@@ -46,10 +48,8 @@ export class Fretboard extends React.Component {
         return positionComponents;
     }
 
-    createFrets(){
-        const minFret = this.calculateMinFret();
-        const maxFret = this.calculateMaxFret();
-        const fretOffset = this.calculateFretOffset();
+    createFrets(minFret, maxFret){
+        const fretOffset = this.calculateFretOffset(minFret);
 
         const fretCount = maxFret - minFret + fretOffset;
         const {fretHeight} = constants;
@@ -63,11 +63,8 @@ export class Fretboard extends React.Component {
         });
     }
 
-    calculateFretboardHeight() {
-        const minFret = this.calculateMinFret();
-        const maxFret = this.calculateMaxFret();
-
-        let paddingFrets = 1 + this.calculateFretOffset();
+    calculateFretboardHeight(minFret, maxFret) {
+        let paddingFrets = 1 + this.calculateFretOffset(minFret);
 
         const displayedFrets = maxFret - minFret + paddingFrets;
         const {fretHeight} = constants;
@@ -77,8 +74,7 @@ export class Fretboard extends React.Component {
         return `${height}em`;
     }
 
-    calculateFretOffset(){
-        const minFret = this.calculateMinFret();
+    calculateFretOffset(minFret){
         let offset = 2;
 
         if (minFret === 1){
