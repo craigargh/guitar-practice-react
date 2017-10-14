@@ -19,8 +19,36 @@ export class Fretboard extends React.Component {
             return <Position key={key} {...position} />
         });
 
-        return <div>
+        const height = this.calculateFretboardHeight();
+
+        return <div className='fretboard' style={{height: height}}>
             {positionComponents}
         </div>;
+    }
+
+    calculateFretboardHeight() {
+        const minFret = this.calculateMinFret();
+        const maxFret = this.calculateMaxFret();
+
+        console.log(maxFret);
+
+        const displayedFrets = maxFret - minFret + 3;
+        const fretHeight = 2.5;
+
+        const height = displayedFrets * fretHeight;
+
+        return `${height}em`;
+    }
+
+    calculateMaxFret() {
+        return this.props.positions.reduce(function (a, b) {
+            return Math.max(a.fret, b.fret);
+        });
+    }
+
+    calculateMinFret(){
+        return this.props.positions.reduce(function (a, b) {
+            return Math.min(a.fret, b.fret);
+        });
     }
 }

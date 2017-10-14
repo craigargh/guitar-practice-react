@@ -19,4 +19,16 @@ describe('Fretboard component', () => {
 
         expect(positionComponents.length).toEqual(3);
     });
+
+    it('should set the height of fretboard using the highest and lowest positions', () =>{
+        const positions = [
+            {finger: 1, fret: 2, guitar_string: 1},
+            {finger: 3, fret: 4, guitar_string: 3},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const fretboard = wrapper.find('.fretboard').first();
+
+        expect(fretboard.props().style.height).toBe('12.5em');
+    })
 });
