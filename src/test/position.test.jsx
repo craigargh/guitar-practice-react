@@ -43,14 +43,14 @@ describe('Position component', () => {
     });
 
     it('should calculate the position of string 1', () => {
-        const wrapper = shallow(<Position guitarString={1}/>);
+        const wrapper = shallow(<Position guitar_string={1}/>);
         const circle = wrapper.find('.circle').first();
 
         expect(circle.props().style.right).toEqual('2.5em');
     })
 
     it('should calculate the position of string 2', () => {
-        const wrapper = shallow(<Position guitarString={2}/>);
+        const wrapper = shallow(<Position guitar_string={2}/>);
         const circle = wrapper.find('.circle').first();
 
         expect(circle.props().style.right).toEqual('5em');

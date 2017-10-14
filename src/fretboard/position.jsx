@@ -6,7 +6,7 @@ export class Position extends React.Component {
     static propTypes = {
         finger: PropTypes.number,
         fret: PropTypes.number,
-        guitarString: PropTypes.number,
+        guitar_string: PropTypes.number,
     };
 
     constructor(props) {
@@ -40,9 +40,9 @@ export class Position extends React.Component {
 
     calculateStringPosition() {
         const stringWidth = 2.5;
-        const {guitarString} = this.props;
+        const {guitar_string} = this.props;
 
-        const stringPosition = stringWidth * guitarString;
+        const stringPosition = stringWidth * guitar_string;
 
         return `${stringPosition}em`;
     }

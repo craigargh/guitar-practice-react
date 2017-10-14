@@ -8,9 +8,9 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <Position finger={1} fret={1} guitarString={1}/>
-                    <Position finger={2} fret={2} guitarString={2}/>
-                    <Position finger={3} fret={3} guitarString={1}/>
+                    <Position finger={1} fret={1} guitar_string={1}/>
+                    <Position finger={2} fret={2} guitar_string={2}/>
+                    <Position finger={3} fret={3} guitar_string={1}/>
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
