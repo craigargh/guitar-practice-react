@@ -1,7 +1,7 @@
 
 .tab {
     position: relative;
-    width:24em;
+    width: 24em;
     margin-right: auto;
     margin-left: auto;
 }
@@ -12,7 +12,8 @@
     color: ghostwhite;
     height: 1em;
     text-align: center;
-    width: 1.5em
+    width: 1.5em;
+    text-shadow: -1px 0 #333535, 0 1px #333535, 1px 0 #333535, 0 -1px #333535;
 }
 
 .tab-line {
