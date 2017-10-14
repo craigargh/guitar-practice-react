@@ -21,13 +21,6 @@ describe('Position component', () => {
         expect(circle.length).toBe(1);
     });
 
-    it('should set the position of the component to absolute', () => {
-        const wrapper = shallow(<Position finger={1}/>);
-        const circle = wrapper.find('.circle').first();
-
-        expect(circle.props().style.position).toEqual('absolute');
-    });
-
     it('should calculate the position of fret one', () => {
         const wrapper = shallow(<Position finger={1} fret={1}/>);
         const circle = wrapper.find('.circle').first();
@@ -40,13 +33,6 @@ describe('Position component', () => {
         const circle = wrapper.find('.circle').first();
 
         expect(circle.props().style.top).toEqual('4.125em');
-    });
-
-    it('should calculate the margin top of the position', () => {
-        const wrapper = shallow(<Position fret={2}/>);
-        const circle = wrapper.find('.circle').first();
-
-        expect(circle.props().style.marginTop).toEqual('-0.46875em');
     });
 
     it('should calculate the position of fret three', () => {

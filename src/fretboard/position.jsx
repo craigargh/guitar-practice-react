@@ -20,13 +20,9 @@ export class Position extends React.Component {
         const fretPosition = this.calculateFretPosition();
         const stringPosition = this.calculateStringPosition();
 
-        const centerOffset = - constants.circleSize / 4;
-
         const position = {
-            position: "absolute",
             top: fretPosition,
             right: stringPosition,
-            marginTop: `${centerOffset}em`,
         };
 
         return <div className="circle" style={position}>
