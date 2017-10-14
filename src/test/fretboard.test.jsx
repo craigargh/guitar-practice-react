@@ -94,4 +94,42 @@ describe('Fretboard component', () => {
         expect(positionComponents.first().props().fret).toEqual(0);
         expect(positionComponents.last().props().fret).toEqual(5);
     });
+
+    it('should add frets to the fretboard', () => {
+        const positions = [
+            {finger: 1, fret: 1, guitar_string: 1},
+            {finger: 2, fret: 2, guitar_string: 2},
+            {finger: 3, fret: 3, guitar_string: 3},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const frets = wrapper.find('.fret');
+
+        expect(frets.length).toEqual(3);
+    });
+
+    it('should add frets to the fretboard with lowest fret 0', () => {
+        const positions = [
+            {finger: 1, fret: 0, guitar_string: 1},
+            {finger: 2, fret: 2, guitar_string: 2},
+            {finger: 3, fret: 3, guitar_string: 3},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const frets = wrapper.find('.fret');
+
+        expect(frets.length).toEqual(3);
+    });
+
+    it('should add frets to the fretboard with lowest fret 2', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+            {finger: 3, fret: 3, guitar_string: 3},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const frets = wrapper.find('.fret');
+
+        expect(frets.length).toEqual(3);
+    });
 });

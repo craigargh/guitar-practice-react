@@ -3,3 +3,11 @@
     width: 12em;
     position: relative;
 }
+
+.fret{
+    height: 0.25em;
+    width: 12em;
+    position: absolute;
+    top: 2.5em;
+    background-color: gainsboro;
+}
