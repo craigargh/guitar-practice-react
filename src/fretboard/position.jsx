@@ -21,7 +21,8 @@ export class Position extends React.Component {
         const position = {
             position: "absolute",
             top: fretPosition,
-            right: stringPosition
+            right: stringPosition,
+            marginTop: `${- 1.875 / 4}em`,
         };
 
         return <div className="circle" style={position}>

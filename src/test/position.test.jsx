@@ -42,6 +42,13 @@ describe('Position component', () => {
         expect(circle.props().style.top).toEqual('4.125em');
     });
 
+    it('should calculate the margin top of the position', () => {
+        const wrapper = shallow(<Position fret={2}/>);
+        const circle = wrapper.find('.circle').first();
+
+        expect(circle.props().style.marginTop).toEqual('-0.46875em');
+    });
+
     it('should calculate the position of fret three', () => {
         const wrapper = shallow(<Position fret={3}/>);
         const circle = wrapper.find('.circle').first();
