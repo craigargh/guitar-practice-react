@@ -21,10 +21,12 @@ export class Fretboard extends React.Component {
 
         const positionComponents = this.createPositions(minFret);
         const frets = this.createFrets(minFret, maxFret);
+        const guitarStrings = this.createGuitarStrings();
         const height = this.calculateFretboardHeight(minFret, maxFret);
 
         return <div className='fretboard' style={{height: height}}>
             {frets}
+            {guitarStrings}
             {positionComponents}
         </div>;
     }
@@ -57,9 +59,22 @@ export class Fretboard extends React.Component {
         return Array(fretCount).fill().map((_, index) => {
             const spacing = (index + 1) * fretHeight;
             const top = `${spacing}em`;
-            const key = `key-${index}`;
+            const key = `fret-${index}`;
 
             return <div className='fret' style={{top}} key={key}/>;
+        });
+    }
+
+    createGuitarStrings(){
+        const stringCount = 6;
+        const {stringWidth} = constants;
+
+        return Array(6).fill().map((_, index) => {
+            const spacing = stringWidth * index;
+            const right = `${spacing}em`;
+            const key = `guitar-string-${index}`;
+
+            return <div className='guitar-string' style={{right}} key={key}/>;
         });
     }
 

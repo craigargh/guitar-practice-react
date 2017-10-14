@@ -132,4 +132,81 @@ describe('Fretboard component', () => {
 
         expect(frets.length).toEqual(3);
     });
+
+    it('should create 6 guitar strings', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const guitarStrings = wrapper.find('.guitar-string');
+
+        expect(guitarStrings.length).toEqual(6);
+    });
+
+    it('should set the position of string 1', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const guitarString = wrapper.find('.guitar-string').first();
+
+        expect(guitarString.props().style.right).toEqual('0em');
+    });
+
+    it('should set the position of string 2', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const guitarString = wrapper.find('.guitar-string').get(1);
+
+        expect(guitarString.props.style.right).toEqual('2em');
+    });
+
+    it('should set the position of string 3', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const guitarString = wrapper.find('.guitar-string').get(2);
+
+        expect(guitarString.props.style.right).toEqual('4em');
+    });
+
+    it('should set the position of string 4', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const guitarString = wrapper.find('.guitar-string').get(3);
+
+        expect(guitarString.props.style.right).toEqual('6em');
+    });
+
+    it('should set the position of string 5', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const guitarString = wrapper.find('.guitar-string').get(4);
+
+        expect(guitarString.props.style.right).toEqual('8em');
+    });
+
+    it('should set the position of string 6', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const guitarString = wrapper.find('.guitar-string').get(5);
+
+        expect(guitarString.props.style.right).toEqual('10em');
+    });
 });
