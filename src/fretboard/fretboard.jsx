@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Position} from "./position";
 
+import './fretboard.css';
+
 export class Fretboard extends React.Component {
     static propTypes = {
         positions: PropTypes.array,
@@ -21,6 +23,8 @@ export class Fretboard extends React.Component {
 
         const height = this.calculateFretboardHeight();
 
+        console.log(height);
+
         return <div className='fretboard' style={{height: height}}>
             {positionComponents}
         </div>;
@@ -29,6 +33,8 @@ export class Fretboard extends React.Component {
     calculateFretboardHeight() {
         const minFret = this.calculateMinFret();
         const maxFret = this.calculateMaxFret();
+
+        console.log(minFret)
 
         let paddingFrets = 3;
 
@@ -47,14 +53,22 @@ export class Fretboard extends React.Component {
     }
 
     calculateMaxFret() {
-        return this.props.positions.reduce(function (a, b) {
-            return Math.max(a.fret, b.fret);
+        const frets = this.props.positions.map((position) => {
+            return position.fret;
+        });
+
+        return frets.reduce(function (a, b) {
+            return Math.max(a, b);
         });
     }
 
     calculateMinFret(){
-        return this.props.positions.reduce(function (a, b) {
-            return Math.min(a.fret, b.fret);
+        const frets = this.props.positions.map((position) => {
+            return position.fret;
+        });
+
+        return frets.reduce(function (a, b) {
+            return Math.min(a, b);
         });
     }
 }
