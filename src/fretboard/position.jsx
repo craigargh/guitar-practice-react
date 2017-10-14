@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './position.css'
 
 export class Position extends React.Component {
     static propTypes = {
