@@ -3,8 +3,9 @@
     background-color: #222;
     width: 12em;
     position: relative;
-    margin-right: auto;
-    margin-left: auto;
+    display: inline-block;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .fret {
