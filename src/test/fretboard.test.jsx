@@ -209,4 +209,30 @@ describe('Fretboard component', () => {
 
         expect(guitarString.props.style.right).toEqual('10em');
     });
+
+    it('should set strings 3 strings to wound', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const woundStrings = wrapper.find('.wound');
+
+        expect(woundStrings.length).toEqual(3);
+    });
+
+    it('should set strings 4, 5 and 6 to wound', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const guitarString4 = wrapper.find('.guitar-string').at(3);
+        const guitarString5 = wrapper.find('.guitar-string').at(4);
+        const guitarString6 = wrapper.find('.guitar-string').at(5);
+
+        expect(guitarString4.hasClass('wound')).toEqual(true);
+        expect(guitarString5.hasClass('wound')).toEqual(true);
+        expect(guitarString6.hasClass('wound')).toEqual(true);
+    });
 });

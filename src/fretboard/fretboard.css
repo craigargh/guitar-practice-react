@@ -1,26 +1,28 @@
-.fretboard{
+.fretboard {
     margin-top: 3em;
     background-color: #222;
     width: 12em;
     position: relative;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.fret{
+.fret {
     height: 0.20em;
     width: 12em;
     position: absolute;
     top: 2.5em;
-    background-color: gainsboro;
+    background-color: grey;
 }
 
-.guitar-string{
-    background-color: gainsboro;
+.guitar-string {
+    background-color: darkgray;
     width: 0.15em;
     height: 100%;
     position: absolute;
-    margin-right: 1em;
+    margin-right: 0.925em;
 }
 
-.wound{
-    width: 0.2em;
+.wound {
+    width: 0.21em;
 }

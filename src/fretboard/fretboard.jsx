@@ -69,12 +69,18 @@ export class Fretboard extends React.Component {
         const stringCount = 6;
         const {stringWidth} = constants;
 
-        return Array(6).fill().map((_, index) => {
+        return Array(stringCount).fill().map((_, index) => {
             const spacing = stringWidth * index;
             const right = `${spacing}em`;
             const key = `guitar-string-${index}`;
 
-            return <div className='guitar-string' style={{right}} key={key}/>;
+            let className = 'guitar-string';
+
+            if(index >= 3){
+                className = 'guitar-string wound'
+            }
+
+            return <div className={className} style={{right}} key={key}/>;
         });
     }
 
