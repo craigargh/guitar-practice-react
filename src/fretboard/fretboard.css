@@ -17,12 +17,13 @@
 
 .guitar-string {
     background-color: darkgray;
-    width: 0.15em;
+    width: 0.12em;
     height: 100%;
     position: absolute;
-    margin-right: 0.925em;
+    margin-right: 0.931em;
 }
 
 .wound {
-    width: 0.21em;
+    width: 0.2em;
+    margin-right: 0.9em;
 }
