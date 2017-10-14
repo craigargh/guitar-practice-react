@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './position.css'
+import * as constants from './constants'
 
 export class Position extends React.Component {
     static propTypes = {
@@ -18,11 +20,13 @@ export class Position extends React.Component {
         const fretPosition = this.calculateFretPosition();
         const stringPosition = this.calculateStringPosition();
 
+        const centerOffset = - constants.circleSize / 4;
+
         const position = {
             position: "absolute",
             top: fretPosition,
             right: stringPosition,
-            marginTop: `${- 1.875 / 4}em`,
+            marginTop: `${centerOffset}em`,
         };
 
         return <div className="circle" style={position}>
@@ -32,9 +36,8 @@ export class Position extends React.Component {
 
     calculateFretPosition() {
         const {fret} = this.props;
-        const fretHeight = 3;
-        const circleHeight = 1.875;
-        const offset = fretHeight - circleHeight;
+        const {fretHeight, circleSize} = constants;
+        const offset = fretHeight - circleSize;
 
         const fretPosition = fretHeight * (fret - 1) + offset;
 
@@ -43,9 +46,8 @@ export class Position extends React.Component {
 
     calculateStringPosition() {
         const {guitar_string} = this.props;
-        const stringWidth = 2;
-        const circleWidth = 1.875;
-        const offset = stringWidth - circleWidth;
+        const {stringWidth, circleSize} = constants;
+        const offset = stringWidth - circleSize;
 
         const stringPosition = stringWidth * (guitar_string - 1)  + offset;
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {Position} from "./position";
+import * as constants from './constants'
 
 import './fretboard.css';
 
@@ -50,9 +52,10 @@ export class Fretboard extends React.Component {
         const fretOffset = this.calculateFretOffset();
 
         const fretCount = maxFret - minFret + fretOffset;
+        const {fretHeight} = constants;
 
         return Array(fretCount).fill().map((_, i) => {
-            const spacing = (i + 1) * 3;
+            const spacing = (i + 1) * fretHeight;
             const top = `${spacing}em`;
 
             return <div className='fret' style={{top}}/>;
@@ -66,7 +69,7 @@ export class Fretboard extends React.Component {
         let paddingFrets = 1 + this.calculateFretOffset();
 
         const displayedFrets = maxFret - minFret + paddingFrets;
-        const fretHeight = 3;
+        const {fretHeight} = constants;
 
         const height = displayedFrets * fretHeight;
 
