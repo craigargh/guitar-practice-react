@@ -15,10 +15,12 @@ export class Position extends React.Component {
     render() {
         const {finger} = this.props;
         const fretPosition = this.calculateFretPosition();
+        const stringPosition = this.calculateStringPosition();
 
         const position = {
             position: "absolute",
             top: fretPosition,
+            right: stringPosition
         };
 
         return <div className="circle" style={position}>
@@ -26,12 +28,21 @@ export class Position extends React.Component {
         </div>
     }
 
-    calculateFretPosition(){
+    calculateFretPosition() {
         const fretHeight = 2.5;
         const {fret} = this.props;
 
         const fretPosition = fretHeight * fret;
 
         return `${fretPosition}em`;
+    }
+
+    calculateStringPosition() {
+        const stringWidth = 2.5;
+        const {guitarString} = this.props;
+
+        const stringPosition = stringWidth * guitarString;
+
+        return `${stringPosition}em`;
     }
 }
