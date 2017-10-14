@@ -235,4 +235,48 @@ describe('Fretboard component', () => {
         expect(guitarString5.hasClass('wound')).toEqual(true);
         expect(guitarString6.hasClass('wound')).toEqual(true);
     });
+
+    it('should display a nut when lowest fret is 0', () => {
+        const positions = [
+            {finger: 2, fret: 0, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const nut = wrapper.find('.nut');
+
+        expect(nut.length).toBe(1);
+    });
+
+    it('should display a nut when lowest fret is 1', () => {
+        const positions = [
+            {finger: 2, fret: 1, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const nut = wrapper.find('.nut');
+
+        expect(nut.length).toBe(1);
+    });
+
+    it('should display a nut when lowest fret is 2', () => {
+        const positions = [
+            {finger: 2, fret: 2, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const nut = wrapper.find('.nut');
+
+        expect(nut.length).toBe(1);
+    });
+
+    it('should not display a nut when lowest fret is greater than 2', () => {
+        const positions = [
+            {finger: 2, fret: 3, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const nut = wrapper.find('.nut');
+
+        expect(nut.length).toBe(0);
+    });
 });

@@ -23,13 +23,36 @@ export class Fretboard extends React.Component {
         const positionComponents = this.createPositions(minFret);
         const frets = this.createFrets(minFret, maxFret);
         const guitarStrings = this.createGuitarStrings();
+        const nut = this.createNut(minFret);
+
         const height = this.calculateFretboardHeight(minFret, maxFret);
 
         return <div className='fretboard' style={{height: height}}>
             {frets}
             {guitarStrings}
+            {nut}
             {positionComponents}
         </div>;
+    }
+
+    calculateMaxFret() {
+        const frets = this.props.positions.map((position) => {
+            return position.fret;
+        });
+
+        return frets.reduce(function (a, b) {
+            return Math.max(a, b);
+        });
+    }
+
+    calculateMinFret(){
+        const frets = this.props.positions.map((position) => {
+            return position.fret;
+        });
+
+        return frets.reduce(function (a, b) {
+            return Math.min(a, b);
+        });
     }
 
     createPositions(minFret) {
@@ -105,23 +128,11 @@ export class Fretboard extends React.Component {
         return offset
     }
 
-    calculateMaxFret() {
-        const frets = this.props.positions.map((position) => {
-            return position.fret;
-        });
-
-        return frets.reduce(function (a, b) {
-            return Math.max(a, b);
-        });
-    }
-
-    calculateMinFret(){
-        const frets = this.props.positions.map((position) => {
-            return position.fret;
-        });
-
-        return frets.reduce(function (a, b) {
-            return Math.min(a, b);
-        });
+    createNut(minFret){
+        if (minFret <=2) {
+            return <div className='nut'/>
+        } else {
+            return null;
+        }
     }
 }
