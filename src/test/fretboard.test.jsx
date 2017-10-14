@@ -30,5 +30,29 @@ describe('Fretboard component', () => {
         const fretboard = wrapper.find('.fretboard').first();
 
         expect(fretboard.props().style.height).toBe('12.5em');
+    });
+
+    it('should set the height of fretboard when lowest fret is 1', () =>{
+        const positions = [
+            {finger: 1, fret: 1, guitar_string: 1},
+            {finger: 3, fret: 3, guitar_string: 3},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const fretboard = wrapper.find('.fretboard').first();
+
+        expect(fretboard.props().style.height).toBe('10em');
+    })
+
+    it('should set the height of fretboard when lowest fret is 0', () =>{
+        const positions = [
+            {finger: 1, fret: 0, guitar_string: 1},
+            {finger: 3, fret: 3, guitar_string: 3},
+        ];
+
+        const wrapper = shallow(<Fretboard positions={positions}/>);
+        const fretboard = wrapper.find('.fretboard').first();
+
+        expect(fretboard.props().style.height).toBe('10em');
     })
 });
