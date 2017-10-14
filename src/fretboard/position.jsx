@@ -6,6 +6,7 @@ export class Position extends React.Component {
     static propTypes = {
         finger: PropTypes.number,
         fret: PropTypes.number,
+        guitarString: PropTypes.number,
     };
 
     constructor(props) {
