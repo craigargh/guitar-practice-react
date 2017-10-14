@@ -12,5 +12,12 @@ describe('Position component', () => {
         const positionText = wrapper.find('.position-text').first();
 
         expect(positionText.text()).toBe("1");
+    });
+
+    it('should set the style to circle', () => {
+        const wrapper = shallow(<Position finger={1}/>);
+        const circle = wrapper.find('.circle');
+
+        expect(circle.length).toBe(1);
     })
 })

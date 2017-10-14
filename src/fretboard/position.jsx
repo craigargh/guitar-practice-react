@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 export class Position extends React.Component {
     static propTypes = {
         finger: PropTypes.number,
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -12,6 +12,8 @@ export class Position extends React.Component {
 
     render() {
         const {finger} = this.props;
-        return <div className="position-text">{finger}</div>
+        return <div className="circle">
+            <div className="position-text">{finger}</div>
+        </div>
     }
 }
