@@ -31,20 +31,6 @@
     }
 }
 
-.circle {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    color: black;
-    text-align: center;
-}
-
-.position-text {
-    margin-top: 5px;
-    text-align: center;
-}
-
 .fret-position-one {
     position: absolute;
     left: 100px;
