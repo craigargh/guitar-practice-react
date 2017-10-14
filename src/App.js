@@ -23,8 +23,9 @@ class App extends Component {
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
-
-                <Fretboard positions={positions}/>
+                <div style={{fontSize:'16px'}}>
+                    <Fretboard positions={positions}/>
+                </div>
             </div>
         );
     }
