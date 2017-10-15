@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Exercise} from "./exercise/exercise";
+import {DataLoader} from "./data-loader/data-loader";
 
 class App extends Component {
     render() {
@@ -202,10 +203,11 @@ class App extends Component {
             }
         ];
 
+        const url = 'http://127.0.0.1:5000/exercise/rhythm-arpeggios/1/';
 
         return (
             <div className="App">
-                <Exercise shapes={shapes} sequence={sequence}/>
+                <DataLoader component={Exercise} url={url}/>
             </div>
         );
     }
