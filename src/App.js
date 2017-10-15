@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Fretboard} from "./fretboard/fretboard";
-import {Tablature} from "./tablature/tablature";
+import {Exercise} from "./exercise/exercise";
 
 class App extends Component {
     render() {
@@ -206,13 +205,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <div className='fretboards-container'>
-                    <Fretboard {...shapes[0]}/>
-                    <Fretboard {...shapes[1]}/>
-                </div>
-                <div className='tab-container'>
-                    <Tablature sequence={sequence}/>
-                </div>
+                <Exercise shapes={shapes} sequence={sequence}/>
             </div>
         );
     }

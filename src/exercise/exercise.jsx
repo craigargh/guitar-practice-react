@@ -21,8 +21,12 @@ export class Exercise extends React.Component {
         const tablature = this.makeTablature();
 
         return <div>
-            {fretboards}
-            {tablature}
+            <div className='fretboards-container'>
+                {fretboards}
+            </div>
+            <div className='tab-container'>
+                {tablature}
+            </div>
         </div>
     };
 

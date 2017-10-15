@@ -20,19 +20,3 @@
 .App-intro {
     font-size: large;
 }
-
-.fretboards-container {
-    margin-top: 3em;
-    font-size: 75%;
-    width: 80%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.tab-container {
-    margin-top: 5em;
-    font-size: 80%;
-    width: 80%;
-    margin-right: auto;
-    margin-left: auto;
-}
