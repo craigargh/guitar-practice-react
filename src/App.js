@@ -5,7 +5,7 @@ import {DataLoader} from "./data-loader/data-loader";
 
 class App extends Component {
     render() {
-        const url = 'http://127.0.0.1:5000/exercise/rhythm-arpeggios/1/';
+        const url = 'http://127.0.0.1:5000/exercise/arpeggio-picking/1/';
 
         return (
             <div className="App">
