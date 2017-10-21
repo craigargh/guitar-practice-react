@@ -1,19 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import fetch from 'isomorphic-fetch';
+import {Exercise} from "../exercise/exercise";
 
 export class DataLoader extends React.Component {
+    static propTypes = {
+        match: PropTypes.object
+    };
+
     constructor(props) {
         super(props);
+
+        const {exerciseName, difficulty} = props.match.params;
+
+        const url = `http://127.0.0.1:5000/exercise/${exerciseName}/${difficulty}/`;
 
         this.state = {
             exercise: {},
             loading: true,
-            url: props.url,
+            url: url,
         }
     }
 
     componentDidMount() {
         this.setState({loading: true});
+
         fetch(this.state.url)
             .then(response => response.json())
             .then(exercise => {
@@ -26,12 +37,11 @@ export class DataLoader extends React.Component {
 
     render() {
         const {loading, exercise} = this.state;
-        const Component = this.props.component;
 
         if (loading) {
             return <div>Loading...</div>
         } else {
-            return <Component {...exercise} />
+            return <Exercise {...exercise} />
         }
     }
 }

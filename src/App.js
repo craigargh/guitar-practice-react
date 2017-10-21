@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
+
 import './App.css';
-import {Exercise} from "./exercise/exercise";
 import {DataLoader} from "./data-loader/data-loader";
+
 
 class App extends Component {
     render() {
@@ -9,7 +11,12 @@ class App extends Component {
 
         return (
             <div className="App">
-                <DataLoader component={Exercise} url={url}/>
+                <BrowserRouter>
+                    <Route
+                        path='/exercise/:exerciseName/:difficulty'
+                        component={DataLoader}
+                    />
+                </BrowserRouter>
             </div>
         );
     }
