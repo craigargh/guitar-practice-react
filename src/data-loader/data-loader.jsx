@@ -12,7 +12,6 @@ export class DataLoader extends React.Component {
         super(props);
 
         const {exerciseName, difficulty} = props.match.params;
-
         const url = `http://127.0.0.1:5000/exercise/${exerciseName}/${difficulty}/`;
 
         this.state = {
