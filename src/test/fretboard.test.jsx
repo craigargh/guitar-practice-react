@@ -279,4 +279,15 @@ describe('Fretboard component', () => {
 
         expect(nut.length).toBe(0);
     });
+
+    it('should add a label to the fretboard', () => {
+        const positions = [
+            {finger: 2, fret: 3, guitar_string: 2},
+        ];
+
+        const wrapper = shallow(<Fretboard root_note="A" tonality="Minor" positions={positions}/>);
+        const shapeLabel = wrapper.find('.fretboard-label').first();
+
+        expect(shapeLabel.text()).toBe('A Minor');
+    });
 });

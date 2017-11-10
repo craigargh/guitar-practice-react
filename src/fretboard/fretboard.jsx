@@ -13,6 +13,8 @@ export class Fretboard extends React.Component {
     };
 
     render() {
+        const shapeLabel = this.makeShapeLabel();
+
         const minFret = this.calculateMinFret();
         const maxFret = this.calculateMaxFret();
 
@@ -23,12 +25,23 @@ export class Fretboard extends React.Component {
 
         const height = this.calculateFretboardHeight(minFret, maxFret);
 
-        return <div className='fretboard' style={{height: height}}>
-            {frets}
-            {guitarStrings}
-            {nut}
-            {positionComponents}
+        return <div>
+            {shapeLabel}
+            <div className='fretboard' style={{height: height}}>
+                {frets}
+                {guitarStrings}
+                {nut}
+                {positionComponents}
+            </div>
         </div>;
+    }
+
+    makeShapeLabel(){
+        const {root_note, tonality} = this.props;
+        const labelText = `${root_note} ${tonality}`;
+
+        return <div className='fretboard-label'>{labelText}</div>;
+
     }
 
     calculateMaxFret() {
