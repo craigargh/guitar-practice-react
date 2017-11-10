@@ -25,7 +25,7 @@ export class Fretboard extends React.Component {
 
         const height = this.calculateFretboardHeight(minFret, maxFret);
 
-        return <div>
+        return <div className='fretboard-wrapper'>
             {shapeLabel}
             <div className='fretboard' style={{height: height}}>
                 {frets}

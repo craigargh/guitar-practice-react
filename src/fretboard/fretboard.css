@@ -10,6 +10,15 @@
     box-shadow: 3px 4px 10px #222;
 }
 
+.fretboard-wrapper {
+    display: inline-block;
+}
+
+.fretboard-label {
+    color: ghostwhite;
+    text-shadow: -2px 0 #222, 0 2px #222, 2px 0 #222, 0 -2px #222;
+}
+
 .fret {
     height: 0.20em;
     width: 12em;
