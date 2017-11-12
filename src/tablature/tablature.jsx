@@ -32,18 +32,15 @@ export class Tablature extends React.Component {
         const {sequence} = this.props;
 
         const tabItems = sequence.map((item, index) => {
-            const key = `tab-item-${index}`;
             const {fret, order, guitar_string} = item;
 
-            const offsetStyle = {
-                top: `${guitar_string - 1}em`,
-            };
-
+            const key = `tab-item-${index}`;
             const beatClass = `tab-beat__${order}`;
+            const stringClass = `tab-string__${guitar_string}`;
 
-            const classStyles = classNames('tab-position', beatClass);
+            const classStyles = classNames('tab-position', beatClass, stringClass);
 
-            return <div className={classStyles} style={offsetStyle} key={key}>
+            return <div className={classStyles} key={key}>
                 {fret}
             </div>
         });

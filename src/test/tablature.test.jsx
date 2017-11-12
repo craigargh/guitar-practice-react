@@ -82,7 +82,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').first();
 
-        expect(item.props().style.top).toBe('0em');
+        expect(item.hasClass('tab-string__1')).toBe(true);
     });
 
     it('should set y offset for string 2', () => {
@@ -93,7 +93,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').first();
 
-        expect(item.props().style.top).toBe('1em');
+        expect(item.hasClass('tab-string__2')).toBe(true);
     });
 
     it('should set y offset for string 3', () => {
@@ -104,7 +104,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').first();
 
-        expect(item.props().style.top).toBe('2em');
+        expect(item.hasClass('tab-string__3')).toBe(true);
     });
 
     it('should set y offset for string 4', () => {
@@ -115,7 +115,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').first();
 
-        expect(item.props().style.top).toBe('3em');
+        expect(item.hasClass('tab-string__4')).toBe(true);
     });
 
     it('should set y offset for string 5', () => {
@@ -126,7 +126,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').first();
 
-        expect(item.props().style.top).toBe('4em');
+        expect(item.hasClass('tab-string__5')).toBe(true);
     });
 
     it('should set y offset for string 6', () => {
@@ -137,7 +137,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').first();
 
-        expect(item.props().style.top).toBe('5em');
+        expect(item.hasClass('tab-string__6')).toBe(true);
     });
 
     it('should render six tab lines', () => {
