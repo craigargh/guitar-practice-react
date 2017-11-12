@@ -175,6 +175,6 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const tabLine = wrapper.find('.tab-line').first();
 
-        expect(tabLine.props().style.width).toBe('12em');
+        expect(tabLine.hasClass('tab-line__7')).toBe(true);
     });
 });
