@@ -159,12 +159,12 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const tabLines = wrapper.find('.tab-line');
 
-        expect(tabLines.at(0).props().style.top).toBe('0em');
-        expect(tabLines.at(1).props().style.top).toBe('1em');
-        expect(tabLines.at(2).props().style.top).toBe('2em');
-        expect(tabLines.at(3).props().style.top).toBe('3em');
-        expect(tabLines.at(4).props().style.top).toBe('4em');
-        expect(tabLines.at(5).props().style.top).toBe('5em');
+        expect(tabLines.at(0).hasClass('tab-string__1')).toBe(true);
+        expect(tabLines.at(1).hasClass('tab-string__2')).toBe(true);
+        expect(tabLines.at(2).hasClass('tab-string__3')).toBe(true);
+        expect(tabLines.at(3).hasClass('tab-string__4')).toBe(true);
+        expect(tabLines.at(4).hasClass('tab-string__5')).toBe(true);
+        expect(tabLines.at(5).hasClass('tab-string__6')).toBe(true);
     });
 
     it('should set the width of the tab lines based on the max order', () => {

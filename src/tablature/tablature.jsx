@@ -52,15 +52,18 @@ export class Tablature extends React.Component {
         const guitarStrings = 6;
 
         return Array(guitarStrings).fill().map((_, index) => {
-            const key = `tab-guitar-string-${index}`;
             const {tabPositionWidth} = constants;
 
             const stringOffset = {
-                top: `${index}em`,
                 width: `${(tabLength + 1) * tabPositionWidth}em`,
             };
 
-            return <div className='tab-line' style={stringOffset} key={key}/>;
+            const key = `tab-guitar-string-${index}`;
+            const stringClass = `tab-string__${index + 1}`;
+
+            const lineStyles = classNames('tab-line', stringClass);
+
+            return <div className={lineStyles} style={stringOffset} key={key}/>;
         });
     }
 }
