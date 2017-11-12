@@ -4,6 +4,8 @@
     width: 24em;
     margin-right: auto;
     margin-left: auto;
+    display: inline-block;
+    margin-bottom: 8em;
 }
 
 .tab-position {

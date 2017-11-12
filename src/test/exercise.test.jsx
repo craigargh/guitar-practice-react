@@ -3,15 +3,25 @@ import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import {Exercise} from "../exercise/exercise";
+import {Tablature} from "../tablature/tablature";
 
 Enzyme.configure({adapter: new Adapter()});
 
 describe('Exercise component', () => {
     it('should render a tablature component', () => {
-        const wrapper = shallow(<Exercise/>);
-        const tablature = wrapper.find('Tablature');
+        const wrapper = shallow(<Exercise sequence={Array(16).fill()}/>);
+
+        const tablature = wrapper.find(Tablature);
 
         expect(tablature.length).toBe(1);
+    });
+
+    it('should render a tablature component for every 16 notes', () => {
+        const wrapper = shallow(<Exercise sequence={Array(17).fill()}/>);
+
+        const tablature = wrapper.find(Tablature);
+
+        expect(tablature.length).toBe(2);
     });
 
     it('should pass the sequence to the tablature component', () => {
@@ -24,7 +34,7 @@ describe('Exercise component', () => {
         const wrapper = shallow(<Exercise sequence={sequence}/>);
         const tablature = wrapper.find('Tablature').first();
 
-        expect(tablature.props().sequence).toBe(sequence);
+        expect(tablature.props().sequence).toEqual(sequence);
     });
 
     it('should render a fretboard for every shape', () => {

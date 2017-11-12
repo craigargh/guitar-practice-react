@@ -169,12 +169,24 @@ describe('Tablature component', () => {
 
     it('should set the width of the tab lines based on the max order', () => {
         const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 1},
+        ];
+
+        const wrapper = shallow(<Tablature sequence={sequence}/>);
+        const tabLine = wrapper.find('.tab-line').first();
+
+        expect(tabLine.hasClass('tab-line__0')).toBe(true);
+    });
+
+    it('should set the width of the tab lines based on difference of min and max beats', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3},
             {"fret": 0, "guitar_string": 6, "order": 7},
         ];
 
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const tabLine = wrapper.find('.tab-line').first();
 
-        expect(tabLine.hasClass('tab-line__7')).toBe(true);
+        expect(tabLine.hasClass('tab-line__4')).toBe(true);
     });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 import {Tablature} from "../tablature/tablature";
 import {Fretboard} from "../fretboard/fretboard";
@@ -31,8 +32,15 @@ export class Exercise extends React.Component {
     };
 
     makeTablature() {
-        const {sequence} = this.props;
-        return <Tablature sequence={sequence}/>;
+        const sequences = _.chunk(this.props.sequence, 16);
+
+        const tabs = sequences.map((sequence, index) => {
+            const key = `tab-block-${index}`;
+
+            return <Tablature key={key} sequence={sequence}/>;
+        });
+
+        return tabs;
     }
 
     makeFretboards() {

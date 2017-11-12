@@ -17,24 +17,29 @@ export class Tablature extends React.Component {
     }
 
     getTabLength(){
+        const minBeat = this.calculateMinOrder();
+
         const {sequence} = this.props;
         const itemOrders = sequence.map((item) => {
             return item.order;
         });
 
-        return itemOrders.reduce((a, b) => {
+        const maxBeat = itemOrders.reduce((a, b) => {
             return Math.max(a, b);
         });
+
+        return maxBeat - minBeat;
     }
 
     makeTabPositions() {
         const {sequence} = this.props;
+        const offset = this.calculateMinOrder();
 
         const tabItems = sequence.map((item, index) => {
             const {fret, order, guitar_string} = item;
 
             const key = `tab-item-${index}`;
-            const beatClass = `tab-beat__${order}`;
+            const beatClass = `tab-beat__${order - offset}`;
             const stringClass = `tab-string__${guitar_string}`;
 
             const classStyles = classNames('tab-position', beatClass, stringClass);
@@ -45,6 +50,16 @@ export class Tablature extends React.Component {
         });
 
         return tabItems;
+    }
+
+    calculateMinOrder(){
+        const order = this.props.sequence.map((item) => {
+            return item.order;
+        });
+
+        return order.reduce(function (a, b) {
+            return Math.min(a, b);
+        });
     }
 
     makeTabLines(tabLength){
