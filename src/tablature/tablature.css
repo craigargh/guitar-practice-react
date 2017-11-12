@@ -2,10 +2,11 @@
 .tab {
     position: relative;
     width: 24em;
+    height: 7em;
     margin-right: auto;
     margin-left: auto;
     display: inline-block;
-    margin-bottom: 8em;
+    margin-bottom: 1em;
 }
 
 .tab-position {
