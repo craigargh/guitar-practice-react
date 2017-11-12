@@ -45,7 +45,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').first();
 
-        expect(item.props().style.left).toBe('0em');
+        expect(item.hasClass('tab-beat__0')).toBe(true);
     });
 
     it('should set the position 2\'s x offset', () => {
@@ -58,7 +58,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').at(1);
 
-        expect(item.props().style.left).toBe('1.5em');
+        expect(item.hasClass('tab-beat__1')).toBe(true);
     });
 
     it('should set the position 3\'s x offset', () => {
@@ -71,7 +71,7 @@ describe('Tablature component', () => {
         const wrapper = shallow(<Tablature sequence={sequence}/>);
         const item = wrapper.find('.tab-position').at(2);
 
-        expect(item.props().style.left).toBe('3em');
+        expect(item.hasClass('tab-beat__2')).toBe(true);
     });
 
     it('should set y offset for string 1', () => {
