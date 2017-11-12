@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import * as constants from '../fretboard/constants';
 import './tablature.css';
 
 export class Tablature extends React.Component {
