@@ -3,6 +3,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 
 import './App.css';
 import {ExerciseLoader} from "./data-loader/exercise-loader";
+import {ExercisesLoader} from "./data-loader/exercises-loader";
 
 
 class App extends Component {
@@ -10,10 +11,16 @@ class App extends Component {
         return (
             <div className="App">
                 <BrowserRouter>
-                    <Route
-                        path='/exercise/:exerciseName/:difficulty'
-                        component={ExerciseLoader}
-                    />
+                    <div>
+                        <Route
+                            path='/exercise/:exerciseName/:difficulty'
+                            component={ExerciseLoader}
+                        />
+                        <Route
+                            path='/exercises/'
+                            component={ExercisesLoader}
+                        />
+                    </div>
                 </BrowserRouter>
             </div>
         );
