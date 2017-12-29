@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './exercises.css';
+
 export class Exercises extends React.Component {
     render () {
         const exerciseGroups = this.makeExerciseGroups();
@@ -25,8 +27,8 @@ export class Exercises extends React.Component {
                 </li>
             });
 
-            return <div>
-                <div className='exercise-group_title'>{name}</div>
+            return <div className='exercise-groups'>
+                <h2 className='exercise-group_title'>{name}</h2>
                 <div className='exercise-group_description'>{description}</div>
 
                 <ul className='exercises_links'>
