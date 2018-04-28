@@ -189,4 +189,157 @@ describe('Tablature component', () => {
 
         expect(tabLine.hasClass('tab-line__4')).toBe(true);
     });
+
+    it('should display a beat for every rhythm item', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beats = wrapper.find('.beat');
+
+        expect(beats.length).toBe(8);
+    });
+
+    it('should set the duration of eighth notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beats = wrapper.find('.beat-duration-8');
+
+        expect(beats.length).toBe(8);
+    });
+
+    it('should set the duration of quarter notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 4},
+            {'duration': 1, 'division': 4},
+            {'duration': 1, 'division': 4},
+            {'duration': 1, 'division': 4},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beats = wrapper.find('.beat-duration-4');
+
+        expect(beats.length).toBe(4);
+    });
+
+    it('should set the duration of sixteenth notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beats = wrapper.find('.beat-duration-16');
+
+        expect(beats.length).toBe(16);
+    });
+
+    it('should set the duration of half notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 2},
+            {'duration': 1, 'division': 2},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beats = wrapper.find('.beat-duration-2');
+
+        expect(beats.length).toBe(2);
+    });
+
+    it('should set the duration of whole notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 1},
+            {'duration': 1, 'division': 1},
+            {'duration': 1, 'division': 1},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beats = wrapper.find('.beat-duration-1');
+
+        expect(beats.length).toBe(3);
+    });
+
+    it('should allow a mixture of notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 8},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const notes_16th = wrapper.find('.beat-duration-16');
+        const notes_8th = wrapper.find('.beat-duration-8');
+
+        expect(notes_16th.length).toBe(8);
+        expect(notes_8th.length).toBe(4);
+    });
 });

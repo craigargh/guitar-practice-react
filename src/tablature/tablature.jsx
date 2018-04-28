@@ -1,22 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './tablature.css';
+import './rhythm.css';
 
 export class Tablature extends React.Component {
+    static propTypes = {
+        sequence: PropTypes.array,
+        rhythm: PropTypes.array,
+    };
+
+    static defaultProps = {
+        sequence: [],
+        rhythm: [],
+    };
+
     render() {
         const tabLength = this.getTabLength();
         const tabLines = this.makeTabLines(tabLength);
 
         const tabItems = this.makeTabPositions();
 
+        const rhythm = this.makeRhythm();
+
         return <div className='tab'>
             {tabLines}
             {tabItems}
+            {rhythm}
         </div>
     }
 
-    getTabLength(){
+    getTabLength() {
         const minBeat = this.calculateMinOrder();
 
         const {sequence} = this.props;
@@ -52,7 +67,7 @@ export class Tablature extends React.Component {
         return tabItems;
     }
 
-    calculateMinOrder(){
+    calculateMinOrder() {
         const order = this.props.sequence.map((item) => {
             return item.order;
         });
@@ -62,7 +77,7 @@ export class Tablature extends React.Component {
         });
     }
 
-    makeTabLines(tabLength){
+    makeTabLines(tabLength) {
         const guitarStrings = 6;
 
         return Array(guitarStrings).fill().map((_, index) => {
@@ -74,5 +89,24 @@ export class Tablature extends React.Component {
 
             return <div className={lineStyles} key={key}/>;
         });
+    }
+
+    makeRhythm() {
+        const {rhythm} = this.props;
+
+        const rhythmComponents = rhythm.map((item, index) => {
+            const duration = item.division / item.duration;
+
+            const durationClass = `beat-duration-${duration}`;
+            const beatStyles = classNames('beat', durationClass);
+
+            return <div className={beatStyles} key={index}>
+                <div className='beat-line'/>
+            </div>
+        });
+
+        return <div className='rhythm'>
+            {rhythmComponents}
+        </div>
     }
 }

@@ -1,0 +1,35 @@
+.rhythm {
+    margin-top: 6.5em;
+}
+
+.beat {
+    display: inline-block;
+    width: 1.5em;
+}
+
+.beat-line {
+    background-color: ghostwhite;
+    width: 1px;
+    height: 1.5em;
+    display: inline-block;
+}
+
+.beat-duration-1 {
+    height: 1px;
+}
+
+.beat-duration-2 {
+    height: 0.75em;
+}
+
+.beat-duration-4 {
+    height: 1.5em;
+}
+
+.beat-duration-8 {
+    height: 1.5em;
+}
+
+.beat-duration-16 {
+    height: 1.5em;
+}
