@@ -10,11 +10,13 @@ export class Exercise extends React.Component {
     static propTypes = {
         sequence: PropTypes.array,
         shapes: PropTypes.array,
+        rhythm: PropTypes.array,
     };
 
     static defaultProps = {
         shapes: [],
         sequence: [],
+        rhythm: [],
     };
 
     render() {
@@ -33,11 +35,12 @@ export class Exercise extends React.Component {
 
     makeTablature() {
         const sequences = this.chunk(this.props.sequence);
+        const rhythm = this.props.rhythm;
 
         const tabs = sequences.map((sequence, index) => {
             const key = `tab-block-${index}`;
 
-            return <Tablature key={key} sequence={sequence}/>;
+            return <Tablature key={key} sequence={sequence} rhythm={rhythm}/>;
         });
 
         return tabs;
@@ -52,8 +55,6 @@ export class Exercise extends React.Component {
         }
 
         const chunked_beats = _.chunk(nested_beats, 16);
-
-        console.log(chunked_beats);
 
         const groups = [];
         for (let index = 0; index < chunked_beats.length; index ++){

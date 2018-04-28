@@ -143,6 +143,25 @@ describe('Exercise component', () => {
         expect(tablature.props().sequence).toEqual(sequence);
     });
 
+    it('should pass the rhythm to the tablature component', () => {
+        const sequence = [
+            {fret: 1, guitar_string: 1, order: 1},
+            {fret: 2, guitar_string: 2, order: 2},
+            {fret: 3, guitar_string: 3, order: 3},
+        ];
+
+        const rhythm = [
+            {duration: 1, division: 4},
+            {duration: 1, division: 4},
+            {duration: 1, division: 4},
+        ];
+
+        const wrapper = shallow(<Exercise sequence={sequence} rhythm={rhythm}/>);
+        const tablature = wrapper.find('Tablature').first();
+
+        expect(tablature.props().rhythm).toEqual(rhythm);
+    });
+
     it('should render a fretboard for every shape', () => {
         const shapes = [
             {positions: [1, 2, 3]},
