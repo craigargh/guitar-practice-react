@@ -112,7 +112,7 @@ export class Tablature extends React.Component {
             beat_count += 1 / beat;
             const beams = this.makeBeams(beat_count);
 
-            if (!beams){
+            if (!beams) {
                 beat_count = 0;
             }
 
@@ -126,7 +126,7 @@ export class Tablature extends React.Component {
         });
     }
 
-    makeBeams(beat_count){
+    makeBeams(beat_count) {
         const showEighthBeam = beat_count < 0.25;
         return showEighthBeam ? <div className='beam'/> : null;
     }
