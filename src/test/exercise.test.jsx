@@ -7,9 +7,25 @@ import {Tablature} from "../tablature/tablature";
 
 Enzyme.configure({adapter: new Adapter()});
 
+function makeSequence(qty) {
+    let sequence = [];
+
+    for (let index = 0; index < qty; index++) {
+        let item = {
+            order: index
+        };
+
+        sequence.push(item)
+    }
+
+    return sequence;
+}
+
 describe('Exercise component', () => {
     it('should render a tablature component', () => {
-        const wrapper = shallow(<Exercise sequence={Array(16).fill()}/>);
+        const sequence = makeSequence(16);
+
+        const wrapper = shallow(<Exercise sequence={sequence}/>);
 
         const tablature = wrapper.find(Tablature);
 
@@ -17,7 +33,97 @@ describe('Exercise component', () => {
     });
 
     it('should render a tablature component for every 16 notes', () => {
-        const wrapper = shallow(<Exercise sequence={Array(17).fill()}/>);
+        const sequence = makeSequence(17);
+
+        const wrapper = shallow(<Exercise sequence={sequence}/>);
+
+        const tablature = wrapper.find(Tablature);
+
+        expect(tablature.length).toBe(2);
+    });
+
+    it('should render a single tablature component for 16 beats of chords', () => {
+        const sequence = [
+            {order: 0},
+            {order: 0},
+            {order: 1},
+            {order: 1},
+            {order: 2},
+            {order: 2},
+            {order: 3},
+            {order: 3},
+            {order: 4},
+            {order: 4},
+            {order: 5},
+            {order: 5},
+            {order: 6},
+            {order: 6},
+            {order: 7},
+            {order: 7},
+            {order: 8},
+            {order: 8},
+            {order: 9},
+            {order: 9},
+            {order: 10},
+            {order: 10},
+            {order: 11},
+            {order: 11},
+            {order: 12},
+            {order: 12},
+            {order: 13},
+            {order: 13},
+            {order: 14},
+            {order: 14},
+            {order: 15},
+            {order: 15},
+        ];
+
+        const wrapper = shallow(<Exercise sequence={sequence}/>);
+
+        const tablature = wrapper.find(Tablature);
+
+        expect(tablature.length).toBe(1);
+    });
+
+    it('should render two tablature components for 17 beats of chords', () => {
+        const sequence = [
+            {order: 0},
+            {order: 0},
+            {order: 1},
+            {order: 1},
+            {order: 2},
+            {order: 2},
+            {order: 3},
+            {order: 3},
+            {order: 4},
+            {order: 4},
+            {order: 5},
+            {order: 5},
+            {order: 6},
+            {order: 6},
+            {order: 7},
+            {order: 7},
+            {order: 8},
+            {order: 8},
+            {order: 9},
+            {order: 9},
+            {order: 10},
+            {order: 10},
+            {order: 11},
+            {order: 11},
+            {order: 12},
+            {order: 12},
+            {order: 13},
+            {order: 13},
+            {order: 14},
+            {order: 14},
+            {order: 15},
+            {order: 15},
+            {order: 16},
+            {order: 16},
+        ];
+
+        const wrapper = shallow(<Exercise sequence={sequence}/>);
 
         const tablature = wrapper.find(Tablature);
 

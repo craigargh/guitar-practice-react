@@ -32,7 +32,7 @@ export class Exercise extends React.Component {
     };
 
     makeTablature() {
-        const sequences = _.chunk(this.props.sequence, 16);
+        const sequences = this.chunk(this.props.sequence);
 
         const tabs = sequences.map((sequence, index) => {
             const key = `tab-block-${index}`;
@@ -41,6 +41,29 @@ export class Exercise extends React.Component {
         });
 
         return tabs;
+    }
+
+    chunk(sequence) {
+        const grouped_beats = _.groupBy(sequence, (item) => item.order);
+
+        const nested_beats = [];
+        for (let order in grouped_beats){
+            nested_beats.push(grouped_beats[order]);
+        }
+
+        const chunked_beats = _.chunk(nested_beats, 16);
+
+        console.log(chunked_beats);
+
+        const groups = [];
+        for (let index = 0; index < chunked_beats.length; index ++){
+            let group = chunked_beats[index];
+
+            const flattened_group = _.flatten(group);
+            groups.push(flattened_group)
+        }
+
+        return groups;
     }
 
     makeFretboards() {
