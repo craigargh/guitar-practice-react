@@ -162,6 +162,38 @@ describe('Exercise component', () => {
         expect(tablature.props().rhythm).toEqual(rhythm);
     });
 
+    it('should pass chunk the rhythms into sets of 16', () => {
+        const sequence = makeSequence(17);
+
+        const rhythm = [
+            {duration: 0, division: 4},
+            {duration: 1, division: 4},
+            {duration: 2, division: 4},
+            {duration: 3, division: 4},
+            {duration: 4, division: 4},
+            {duration: 5, division: 4},
+            {duration: 6, division: 4},
+            {duration: 7, division: 4},
+            {duration: 8, division: 4},
+            {duration: 9, division: 4},
+            {duration: 10, division: 4},
+            {duration: 11, division: 4},
+            {duration: 12, division: 4},
+            {duration: 13, division: 4},
+            {duration: 14, division: 4},
+            {duration: 15, division: 4},
+            {duration: 16, division: 4},
+        ];
+
+        const wrapper = shallow(<Exercise sequence={sequence} rhythm={rhythm}/>);
+        const tablature = wrapper.find('Tablature');
+
+        console.log(tablature);
+
+        expect(tablature.first().props().rhythm.length).toEqual(16);
+        expect(tablature.at(1).props().rhythm.length).toEqual(1);
+    });
+
     it('should render a fretboard for every shape', () => {
         const shapes = [
             {positions: [1, 2, 3]},

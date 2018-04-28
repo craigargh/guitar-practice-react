@@ -35,9 +35,10 @@ export class Exercise extends React.Component {
 
     makeTablature() {
         const sequences = this.chunk(this.props.sequence);
-        const rhythm = this.props.rhythm;
+        const rhythms = _.chunk(this.props.rhythm, 16);
 
         const tabs = sequences.map((sequence, index) => {
+            const rhythm = rhythms[index];
             const key = `tab-block-${index}`;
 
             return <Tablature key={key} sequence={sequence} rhythm={rhythm}/>;
