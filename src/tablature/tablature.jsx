@@ -106,14 +106,15 @@ export class Tablature extends React.Component {
     }
 
     makeRhythmLines(beats) {
-        let beat_count = 0;
+        let beatCount = 0;
 
         return beats.map((beat, index) => {
-            beat_count += 1 / beat;
-            const beams = this.makeBeams(beat_count);
+            beatCount += 1 / beat;
+            const beam = this.makeBeam(beatCount);
+            const doubleBeam = this.makeDoubleBeam(beatCount, beat);
 
-            if (!beams) {
-                beat_count = 0;
+            if (!beam) {
+                beatCount = 0;
             }
 
             const durationClass = `beat-duration-${beat}`;
@@ -121,13 +122,22 @@ export class Tablature extends React.Component {
 
             return <div className={beatStyles} key={index}>
                 <div className='beat-stem'/>
-                {beams}
+                {beam}
+                {doubleBeam}
             </div>
         });
     }
 
-    makeBeams(beat_count) {
-        const showEighthBeam = beat_count < 0.25;
-        return showEighthBeam ? <div className='beam'/> : null;
+    makeBeam(beatCount) {
+        return this.showBeam(beatCount) ? <div className='beam'/> : null;
+    }
+
+    makeDoubleBeam(beatCount, beat) {
+        const showDoubleBeam = this.showBeam(beatCount) && beat === 16;
+        return showDoubleBeam ? <div className='double-beam'></div> : null;
+    }
+
+    showBeam(beatCount) {
+        return beatCount < 0.25;
     }
 }

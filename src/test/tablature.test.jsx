@@ -418,4 +418,48 @@ describe('Tablature component', () => {
 
         expect(beam.length).toBe(0);
     });
+
+    it('should connect sixteenth notes with a beam', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beam = wrapper.find('.beam');
+
+        expect(beam.length).toBe(6);
+    });
+
+    it('should connect sixteenth notes with a double beam', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beam = wrapper.find('.double-beam');
+
+        expect(beam.length).toBe(6);
+    });
 });
