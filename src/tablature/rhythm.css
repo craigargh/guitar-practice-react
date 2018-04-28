@@ -1,5 +1,5 @@
 .rhythm {
-    margin-top: 6.5em;
+    margin-top: 6.75em;
     text-align: left;
 }
 
@@ -9,9 +9,9 @@
     text-align: center;
 }
 
-.beat-line {
+.beat-stem {
     background-color: ghostwhite;
-    width: 1px;
+    width: 0.079em;
     height: 1.5em;
     display: inline-block;
 }
@@ -36,4 +36,12 @@
 
 .beat-duration-16 {
     height: 1.5em;
+}
+
+.beam {
+    margin-left: 0.72em;
+    margin-top: -0.35em;
+    background-color: ghostwhite;
+    height: 0.15em;
+    width: 1.57em;
 }

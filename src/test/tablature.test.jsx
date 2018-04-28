@@ -342,4 +342,80 @@ describe('Tablature component', () => {
         expect(notes_16th.length).toBe(8);
         expect(notes_8th.length).toBe(4);
     });
+
+    it('should connect eighth notes with a beam', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beam = wrapper.find('.beam');
+
+        expect(beam.length).toBe(4);
+    });
+
+    it('should not connect quarter notes with a beam', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 4},
+            {'duration': 1, 'division': 4},
+            {'duration': 1, 'division': 4},
+            {'duration': 1, 'division': 4},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beam = wrapper.find('.beam');
+
+        expect(beam.length).toBe(0);
+    });
+
+    it('should not connect half notes with a beam', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 2},
+            {'duration': 1, 'division': 2},
+            {'duration': 1, 'division': 2},
+            {'duration': 1, 'division': 2},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beam = wrapper.find('.beam');
+
+        expect(beam.length).toBe(0);
+    });
+
+    it('should not connect whole notes with a beam', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 1},
+            {'duration': 1, 'division': 1},
+            {'duration': 1, 'division': 1},
+            {'duration': 1, 'division': 1},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beam = wrapper.find('.beam');
+
+        expect(beam.length).toBe(0);
+    });
 });

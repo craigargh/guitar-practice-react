@@ -94,19 +94,37 @@ export class Tablature extends React.Component {
     makeRhythm() {
         const {rhythm} = this.props;
 
-        const rhythmComponents = rhythm.map((item, index) => {
-            const duration = item.division / item.duration;
+        const beats = rhythm.map((item) => {
+            return item.division / item.duration;
+        });
 
-            const durationClass = `beat-duration-${duration}`;
+        const rhythmLines = this.makeRhythmLines(beats);
+
+        return <div className='rhythm'>
+            {rhythmLines}
+        </div>
+    }
+
+    makeRhythmLines(beats) {
+        let beat_count = 0;
+
+        return beats.map((beat, index) => {
+            beat_count += 1 / beat;
+
+            const showBeam = beat_count < 0.25;
+            const beam = showBeam ? <div className='beam'/> : null;
+
+            if (!showBeam){
+                beat_count = 0;
+            }
+
+            const durationClass = `beat-duration-${beat}`;
             const beatStyles = classNames('beat', durationClass);
 
             return <div className={beatStyles} key={index}>
-                <div className='beat-line'/>
+                <div className='beat-stem'/>
+                {beam}
             </div>
         });
-
-        return <div className='rhythm'>
-            {rhythmComponents}
-        </div>
     }
 }
