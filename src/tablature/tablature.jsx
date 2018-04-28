@@ -110,11 +110,9 @@ export class Tablature extends React.Component {
 
         return beats.map((beat, index) => {
             beat_count += 1 / beat;
+            const beams = this.makeBeams(beat_count);
 
-            const showBeam = beat_count < 0.25;
-            const beam = showBeam ? <div className='beam'/> : null;
-
-            if (!showBeam){
+            if (!beams){
                 beat_count = 0;
             }
 
@@ -123,8 +121,13 @@ export class Tablature extends React.Component {
 
             return <div className={beatStyles} key={index}>
                 <div className='beat-stem'/>
-                {beam}
+                {beams}
             </div>
         });
+    }
+
+    makeBeams(beat_count){
+        const showEighthBeam = beat_count < 0.25;
+        return showEighthBeam ? <div className='beam'/> : null;
     }
 }
