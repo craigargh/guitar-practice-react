@@ -360,9 +360,11 @@ describe('Tablature component', () => {
         ];
 
         const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beam = wrapper.find('.beam');
         const beamFirst = wrapper.find('.beam-first');
         const beamLast = wrapper.find('.beam-last');
 
+        expect(beam.length).toBe(0);
         expect(beamFirst.length).toBe(4);
         expect(beamLast.length).toBe(4);
     });
@@ -381,8 +383,12 @@ describe('Tablature component', () => {
 
         const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
         const beam = wrapper.find('.beam');
+        const beamFirst = wrapper.find('.beam-first');
+        const beamLast = wrapper.find('.beam-last');
 
         expect(beam.length).toBe(0);
+        expect(beamFirst.length).toBe(0);
+        expect(beamLast.length).toBe(0);
     });
 
     it('should not connect half notes with a beam', () => {
@@ -399,8 +405,12 @@ describe('Tablature component', () => {
 
         const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
         const beam = wrapper.find('.beam');
+        const beamFirst = wrapper.find('.beam-first');
+        const beamLast = wrapper.find('.beam-last');
 
         expect(beam.length).toBe(0);
+        expect(beamFirst.length).toBe(0);
+        expect(beamLast.length).toBe(0);
     });
 
     it('should not connect whole notes with a beam', () => {
@@ -417,8 +427,12 @@ describe('Tablature component', () => {
 
         const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
         const beam = wrapper.find('.beam');
+        const beamFirst = wrapper.find('.beam-first');
+        const beamLast = wrapper.find('.beam-last');
 
         expect(beam.length).toBe(0);
+        expect(beamFirst.length).toBe(0);
+        expect(beamLast.length).toBe(0);
     });
 
     it('should connect sixteenth notes with a beam', () => {
