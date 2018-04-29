@@ -113,7 +113,7 @@ export class Tablature extends React.Component {
             const doubleBeam = this.makeDoubleBeam(beatCount, beat);
 
 
-            if (beatCount + (1 / beat) === 0.25) {
+            if (beatCount + (1 / beat) >= 0.25) {
                 beatCount = 0;
             } else {
                 beatCount += 1 / beat;
@@ -135,11 +135,11 @@ export class Tablature extends React.Component {
 
         const beamClass = `beam${beamType}`;
 
-        return this.showBeam(beatCount) ? <div className={beamClass}/> : null;
+        return this.showBeam(beatCount, beat) ? <div className={beamClass}/> : null;
     }
 
     makeDoubleBeam(beatCount, beat) {
-        const showDoubleBeam = beat === 16 && this.showBeam(beatCount);
+        const showDoubleBeam = beat === 16 && this.showBeam(beatCount, beat);
 
         const beamType = this.getBeamType(beatCount, beat);
         const beamClass = `double-beam${beamType}`;
@@ -150,16 +150,19 @@ export class Tablature extends React.Component {
     getBeamType(beatCount, beat){
         let beamType = '';
 
+        console.log(beatCount + (1 / beat));
+
         if(beatCount === 0){
             beamType = '-first';
-        } else if (beatCount + (1 / beat) === 0.25){
+        } else if (beatCount + (1 / beat) >= 0.25){
             beamType = '-last'
         }
 
         return beamType;
     }
 
-    showBeam(beatCount) {
-        return beatCount < 0.25;
+    showBeam(beatCount, beat) {
+        const nextBeat = beatCount + (1 / beat);
+        return nextBeat <= 0.25;
     }
 }

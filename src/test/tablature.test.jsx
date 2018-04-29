@@ -472,4 +472,102 @@ describe('Tablature component', () => {
         expect(beamFirst.length).toBe(2);
         expect(beamLast.length).toBe(2);
     });
+
+    it('should show beams for a mixture of sixteenth and eighth notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 16},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+        const beam = wrapper.find('.beam');
+        const beamFirst = wrapper.find('.beam-first');
+        const beamLast = wrapper.find('.beam-last');
+
+        expect(beam.length).toBe(3);
+        expect(beamFirst.length).toBe(3);
+        expect(beamLast.length).toBe(3);
+    });
+
+    it('should show double beams for a mixture of sixteenth and eighth notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 16},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+
+        const doubleBeam = wrapper.find('.double-beam');
+        const doubleBeamFirst = wrapper.find('.double-beam-first');
+        const doubleBeamLast = wrapper.find('.double-beam-last');
+
+        expect(doubleBeam.length).toBe(2);
+        expect(doubleBeamFirst.length).toBe(2);
+        expect(doubleBeamLast.length).toBe(2);
+    });
+
+    it('should not show double beams for a mixture of sixteenth and quarter notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 4},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+
+        const doubleBeam = wrapper.find('.double-beam');
+        const doubleBeamFirst = wrapper.find('.double-beam-first');
+        const doubleBeamLast = wrapper.find('.double-beam-last');
+
+        expect(doubleBeam.length).toBe(1);
+        expect(doubleBeamFirst.length).toBe(1);
+        expect(doubleBeamLast.length).toBe(0);
+    });
+
+    it('should not show double beams for a mixture of eighth and quarter notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 4},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+
+        const beam = wrapper.find('.beam');
+        const beamFirst = wrapper.find('.beam-first');
+        const beamLast = wrapper.find('.beam-last');
+
+        expect(beam.length).toBe(0);
+        expect(beamFirst.length).toBe(1);
+        expect(beamLast.length).toBe(0);
+    });
 });
