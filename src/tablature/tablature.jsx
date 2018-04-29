@@ -163,6 +163,6 @@ export class Tablature extends React.Component {
 
     showBeam(beatCount, beat) {
         const nextBeat = beatCount + (1 / beat);
-        return nextBeat <= 0.25;
+        return nextBeat <= 0.25 && beat > 4;
     }
 }

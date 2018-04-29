@@ -550,7 +550,7 @@ describe('Tablature component', () => {
         expect(doubleBeamLast.length).toBe(0);
     });
 
-    it('should not show double beams for a mixture of eighth and quarter notes', () => {
+    it('should not show beams for a mixture of eighth and quarter notes', () => {
         const sequence = [
             {"fret": 0, "guitar_string": 6, "order": 3}
         ];
@@ -569,5 +569,27 @@ describe('Tablature component', () => {
         expect(beam.length).toBe(0);
         expect(beamFirst.length).toBe(1);
         expect(beamLast.length).toBe(0);
+    });
+
+    it('should not show double beams starting on quarter notes', () => {
+        const sequence = [
+            {"fret": 0, "guitar_string": 6, "order": 3}
+        ];
+
+        const rhythm = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 4},
+        ];
+
+        const wrapper = shallow(<Tablature rhythm={rhythm} sequence={sequence}/>);
+
+        const beam = wrapper.find('.beam');
+        const beamFirst = wrapper.find('.beam-first');
+        const beamLast = wrapper.find('.beam-last');
+
+        expect(beam.length).toBe(0);
+        expect(beamFirst.length).toBe(1);
+        expect(beamLast.length).toBe(1);
     });
 });
