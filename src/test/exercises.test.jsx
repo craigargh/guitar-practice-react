@@ -69,10 +69,10 @@ describe('Exercises Component', () => {
 
         const exercisesItems = wrapper.find('.exercise_item');
 
-        expect(exercisesItems.at(0).text()).toBe('1');
-        expect(exercisesItems.at(1).text()).toBe('2');
-        expect(exercisesItems.at(2).text()).toBe('1');
-        expect(exercisesItems.at(3).text()).toBe('2');
+        expect(exercisesItems.at(0).text()).toBe('Level 1');
+        expect(exercisesItems.at(1).text()).toBe('Level 2');
+        expect(exercisesItems.at(2).text()).toBe('Level 1');
+        expect(exercisesItems.at(3).text()).toBe('Level 2');
     });
 
     it('should set the key for every url', () => {

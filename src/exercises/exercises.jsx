@@ -22,7 +22,7 @@ export class Exercises extends React.Component {
 
                 return <li className='exercise_item'>
                     <a href={path} className='exercise_link'>
-                        {key}
+                        Level {key}
                     </a>
                 </li>
             });

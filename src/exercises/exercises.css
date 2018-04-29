@@ -1,4 +1,10 @@
 .exercise-groups {
     text-align: left;
     margin-left: 36px;
+    color: ghostwhite;
+}
+
+.exercise-groups a {
+    color: cornflowerblue;
+    text-decoration-line: none;
 }
