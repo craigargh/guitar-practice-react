@@ -39,11 +39,26 @@
 }
 
 .beam {
-    margin-left: 0.72em;
     margin-top: -0.35em;
     background-color: ghostwhite;
     height: 0.15em;
     width: 1.57em;
+}
+
+.beam-first {
+    margin-left: 0.72em;
+    margin-top: -0.35em;
+    background-color: ghostwhite;
+    height: 0.15em;
+    width: 0.85em;
+}
+
+.beam-last {
+    margin-right: 0.79em;
+    margin-top: -0.35em;
+    background-color: ghostwhite;
+    height: 0.15em;
+    width: 0.78em;
 }
 
 .double-beam {
@@ -52,4 +67,20 @@
     background-color: ghostwhite;
     height: 0.1em;
     width: 1.57em;
+}
+
+.double-beam-first {
+    margin-left: 0.72em;
+    margin-top: -0.5em;
+    background-color: ghostwhite;
+    height: 0.1em;
+    width: 0.85em;
+}
+
+.double-beam-last {
+    margin-right: 0.79em;
+    margin-top: -0.5em;
+    background-color: ghostwhite;
+    height: 0.1em;
+    width: 0.78em;
 }

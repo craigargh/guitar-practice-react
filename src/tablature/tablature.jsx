@@ -109,12 +109,14 @@ export class Tablature extends React.Component {
         let beatCount = 0;
 
         return beats.map((beat, index) => {
-            beatCount += 1 / beat;
-            const beam = this.makeBeam(beatCount);
+            const beam = this.makeBeam(beatCount, beat);
             const doubleBeam = this.makeDoubleBeam(beatCount, beat);
 
-            if (!beam) {
+
+            if (beatCount + (1 / beat) === 0.25) {
                 beatCount = 0;
+            } else {
+                beatCount += 1 / beat;
             }
 
             const durationClass = `beat-duration-${beat}`;
@@ -128,13 +130,33 @@ export class Tablature extends React.Component {
         });
     }
 
-    makeBeam(beatCount) {
-        return this.showBeam(beatCount) ? <div className='beam'/> : null;
+    makeBeam(beatCount, beat) {
+        const beamType = this.getBeamType(beatCount, beat);
+
+        const beamClass = `beam${beamType}`;
+
+        return this.showBeam(beatCount) ? <div className={beamClass}/> : null;
     }
 
     makeDoubleBeam(beatCount, beat) {
-        const showDoubleBeam = this.showBeam(beatCount) && beat === 16;
-        return showDoubleBeam ? <div className='double-beam'></div> : null;
+        const showDoubleBeam = beat === 16 && this.showBeam(beatCount);
+
+        const beamType = this.getBeamType(beatCount, beat);
+        const beamClass = `double-beam${beamType}`;
+
+        return showDoubleBeam ? <div className={beamClass}/> : null;
+    }
+
+    getBeamType(beatCount, beat){
+        let beamType = '';
+
+        if(beatCount === 0){
+            beamType = '-first';
+        } else if (beatCount + (1 / beat) === 0.25){
+            beamType = '-last'
+        }
+
+        return beamType;
     }
 
     showBeam(beatCount) {
